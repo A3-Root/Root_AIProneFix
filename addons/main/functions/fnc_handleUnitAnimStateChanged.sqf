@@ -16,5 +16,6 @@
 params [["_unit", objNull, [objNull]], ["_animation", "", [""]]];
 
 if ((toLowerANSI _animation) find "ppne" == -1) exitWith {};
+if !([_unit, "DOWN"] call FUNC(isStanceBlocked)) exitWith {};
 
 [_unit, true] call FUNC(correctUnit);

@@ -28,4 +28,9 @@ if !([_unit] call FUNC(isEligibleUnit)) exitWith {false};
 
 GVAR(units) pushBackUnique _unit;
 
-[_unit, false] call FUNC(correctUnit);
+if (
+    [_unit, stance _unit] call FUNC(isStanceBlocked)
+    || {[_unit, unitPos _unit] call FUNC(isStanceBlocked)}
+) then {
+    [_unit, false] call FUNC(correctUnit);
+};

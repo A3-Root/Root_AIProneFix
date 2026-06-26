@@ -17,11 +17,13 @@ params [["_unit", objNull, [objNull]], ["_mode", "AUTO", [""]]];
 
 if (isNull _unit || {!local _unit} || {isPlayer _unit}) exitWith {};
 
-if (toUpperANSI _mode == "DOWN") exitWith {
-    _unit setVariable [QGVAR(allowProne), true, false];
+private _stance = [_mode] call FUNC(normalizeStance);
+
+if (_stance == "DOWN") exitWith {
+    [_unit, _stance, true, false, 0] call FUNC(setStanceAllowanceLocal);
 };
 
-_unit setVariable [QGVAR(allowProne), nil, false];
+[_unit, "DOWN", false, false, 0] call FUNC(setStanceAllowanceLocal);
 
 [
     {

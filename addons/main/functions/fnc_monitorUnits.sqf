@@ -1,7 +1,7 @@
 #include "..\script_component.hpp"
 /*
  * Author: Root
- * Monitors managed AI units and corrects prohibited prone states.
+ * Monitors managed AI units and corrects prohibited stance states.
  *
  * Arguments:
  * None
@@ -18,13 +18,23 @@ GVAR(units) = GVAR(units) select {
 };
 
 {
+    private _stance = stance _x;
+    private _unitPos = unitPos _x;
+    private _animationState = toLowerANSI (animationState _x);
+    private _activeOneTimeStances = _x getVariable [QGVAR(activeOneTimeStances), []];
+
+    if (_activeOneTimeStances isNotEqualTo []) then {
+        private _currentMode = [_stance] call FUNC(normalizeStance);
+        _activeOneTimeStances = _activeOneTimeStances select {_x == _currentMode};
+        _x setVariable [QGVAR(activeOneTimeStances), _activeOneTimeStances, false];
+    };
+
     if (
         [_x] call FUNC(isEligibleUnit)
-        && {!(_x getVariable [QGVAR(allowProne), false])}
         && {
-            stance _x == "PRONE"
-            || {toUpperANSI (unitPos _x) == "DOWN"}
-            || {(toLowerANSI (animationState _x)) find "ppne" != -1}
+            [_x, _stance] call FUNC(isStanceBlocked)
+            || {[_x, _unitPos] call FUNC(isStanceBlocked)}
+            || {_animationState find "ppne" != -1 && {[_x, "DOWN"] call FUNC(isStanceBlocked)}}
         }
     ) then {
         [_x, true] call FUNC(correctUnit);
