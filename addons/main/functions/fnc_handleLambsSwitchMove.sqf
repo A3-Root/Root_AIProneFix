@@ -1,0 +1,27 @@
+#include "..\script_component.hpp"
+/*
+ * Author: Root
+ * Corrects LAMBS prone animation requests for managed AI units.
+ *
+ * Arguments:
+ * 0: Unit <OBJECT>
+ * 1: Animation <STRING>
+ *
+ * Return Value:
+ * None
+ *
+ * Public: No
+ */
+
+params [["_unit", objNull, [objNull]], ["_animation", "", [""]]];
+
+if ((toLowerANSI _animation) find "ppne" == -1) exitWith {};
+
+[
+    {
+        params ["_unit"];
+        [_unit, true] call FUNC(correctUnit);
+    },
+    [_unit],
+    0
+] call CBA_fnc_waitAndExecute;
