@@ -20,7 +20,6 @@ GVAR(units) = GVAR(units) select {
 {
     private _stance = stance _x;
     private _unitPos = unitPos _x;
-    private _animationState = toLowerANSI (animationState _x);
     private _activeOneTimeStances = _x getVariable [QGVAR(activeOneTimeStances), []];
 
     if (_activeOneTimeStances isNotEqualTo []) then {
@@ -34,9 +33,8 @@ GVAR(units) = GVAR(units) select {
         && {
             [_x, _stance] call FUNC(isStanceBlocked)
             || {[_x, _unitPos] call FUNC(isStanceBlocked)}
-            || {_animationState find "ppne" != -1 && {[_x, "DOWN"] call FUNC(isStanceBlocked)}}
         }
     ) then {
-        [_x, true] call FUNC(correctUnit);
+        [_x, false] call FUNC(correctUnit);
     };
 } forEach GVAR(units);

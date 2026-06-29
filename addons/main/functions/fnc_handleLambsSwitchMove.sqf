@@ -21,7 +21,7 @@ if !([_unit, "DOWN"] call FUNC(isStanceBlocked)) exitWith {};
 [
     {
         params ["_unit"];
-        [_unit, true] call FUNC(correctUnit);
+        [_unit, false] call FUNC(correctUnit);
     },
     [_unit],
     0

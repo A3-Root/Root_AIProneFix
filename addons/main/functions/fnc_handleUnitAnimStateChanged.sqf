@@ -18,4 +18,11 @@ params [["_unit", objNull, [objNull]], ["_animation", "", [""]]];
 if ((toLowerANSI _animation) find "ppne" == -1) exitWith {};
 if !([_unit, "DOWN"] call FUNC(isStanceBlocked)) exitWith {};
 
-[_unit, true] call FUNC(correctUnit);
+[
+    {
+        params ["_unit"];
+        [_unit, false] call FUNC(correctUnit);
+    },
+    [_unit],
+    0
+] call CBA_fnc_waitAndExecute;
