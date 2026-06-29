@@ -10,6 +10,7 @@ include = [
     "meta.cpp",
     "LICENSE",
     "root_aipronefix_logo.paa",
+    "root_aipronefix_logo.png",
     "README*.md",
 ]
 exclude = [
