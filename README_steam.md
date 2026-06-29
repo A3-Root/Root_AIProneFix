@@ -48,7 +48,7 @@ Equivalent CBA target events:
 [url=https://www.bohemia.net/community/licenses/arma-public-license-share-alike]Read Full License[/url]
 
 [b]TL;DR - What am I allowed to do?[/b]
-✅ [b]Attribution Required[/b] - Credit original authors (y0014984, Wasserstoff, JulesVerner) and current maintainer (Root)
+✅ [b]Attribution Required[/b] - Credit Root (a. xMidnightSnowx)
 ✅ [b]Share Alike[/b] - Derivative works must use same APL-SA license
 ✅ [b]Redistribute publicly[/b] with clear credit and link to this workshop page
 ❌ [b]Non-Commercial[/b] - No commercial use
