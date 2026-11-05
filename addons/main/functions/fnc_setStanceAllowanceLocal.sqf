@@ -25,7 +25,7 @@ params [
 ];
 
 private _mode = [_stance] call FUNC(normalizeStance);
-if (isNull _unit || {!local _unit} || {_mode == ""}) exitWith {false};
+if (isNull _unit || {!local _unit} || _mode == "") exitWith {false};
 
 private _variable = [QGVAR(allowedStances), QGVAR(oneTimeStances)] select _oneTime;
 private _stances = _unit getVariable [_variable, []];
@@ -41,7 +41,7 @@ if (_allow) then {
 
 _unit setVariable [_variable, _stances, false];
 
-if (_allow && {_duration > 0}) then {
+if (_allow && _duration > 0) then {
     [
         {
             params ["_unit", "_mode", "_oneTime"];

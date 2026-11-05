@@ -1,4 +1,5 @@
 PREP(allowStance);
+PREP(applyStanceAnim);
 PREP(clearStanceAllowances);
 PREP(correctUnit);
 PREP(getBlockedStances);

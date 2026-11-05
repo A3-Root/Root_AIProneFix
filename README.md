@@ -18,6 +18,8 @@ Default: `Prone`
 
 If every stance is selected, standing is kept as the fallback stance.
 
+Corrections force the matching animation on units with PATH disabled (garrisoned) or when `setUnitPos` alone did not change the stance.
+
 ## Script API
 Allow a blocked stance for one transition:
 ```sqf

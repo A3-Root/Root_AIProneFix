@@ -1,7 +1,7 @@
 #include "..\script_component.hpp"
 /*
  * Author: Root
- * Corrects LAMBS prone animation requests for managed AI units.
+ * Corrects LAMBS prone and kneel animation requests for managed AI units.
  *
  * Arguments:
  * 0: Unit <OBJECT>
@@ -15,8 +15,10 @@
 
 params [["_unit", objNull, [objNull]], ["_animation", "", [""]]];
 
-if ((toLowerANSI _animation) find "ppne" == -1) exitWith {};
-if !([_unit, "DOWN"] call FUNC(isStanceBlocked)) exitWith {};
+private _name = toLowerANSI _animation;
+private _blocked = (_name find "ppne" != -1 && {[_unit, "DOWN"] call FUNC(isStanceBlocked)})
+    || {_name find "pknl" != -1 && {[_unit, "MIDDLE"] call FUNC(isStanceBlocked)}};
+if (!_blocked) exitWith {};
 
 [
     {

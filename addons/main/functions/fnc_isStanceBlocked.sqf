@@ -19,7 +19,7 @@ private _mode = [_stance] call FUNC(normalizeStance);
 if (_mode == "") exitWith {false};
 
 private _blockedStances = call FUNC(getBlockedStances);
-if (count _blockedStances == 3 && {_mode == "UP"}) exitWith {false};
+if (count _blockedStances == 3 && _mode == "UP") exitWith {false};
 if !(_mode in _blockedStances) exitWith {false};
 
 !([_unit, _mode] call FUNC(isStanceAllowed))
